@@ -14,7 +14,9 @@ def ssh_command(ip, user, passwd, command):
         while True:
             command = ssh_session.recv(1024)
             try:
-                cmd_output = subprocess.check_output(command, shell=True)
+                cmd_output = subprocess.check_output(command,
+                                                     shell=True,
+                                                     universal_newlines=True)
                 if len(cmd_output) == 0:
                     cmd_output = 'no output'
 
